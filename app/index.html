@@ -3,26 +3,41 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AI Image Editor — V5</title>
+<title>AI Image Editor — V6</title>
 <style>
-body{font-family:Segoe UI,Tahoma,sans-serif;margin:0;background:#f4f6f8;color:#17202a}header{padding:18px 24px;background:#17202a;color:#fff}main{max-width:1200px;margin:auto;padding:20px}.grid{display:grid;grid-template-columns:320px 1fr;gap:18px}.panel{background:#fff;border-radius:14px;padding:16px;box-shadow:0 2px 12px #0001}.row{display:flex;gap:8px;flex-wrap:wrap}button,input,textarea{font:inherit}button{border:0;border-radius:9px;padding:9px 13px;cursor:pointer;background:#e8edf2}button.primary{background:#1769e0;color:#fff}textarea{width:100%;min-height:90px;box-sizing:border-box;padding:10px;border:1px solid #ccd3da;border-radius:9px}canvas{max-width:100%;display:block;margin:auto;background:#eee;border-radius:10px}#status{margin-top:10px;font-size:13px;color:#465}label{display:block;margin:12px 0 6px;font-weight:600}.muted{color:#667;font-size:13px}</style>
+body{font-family:Segoe UI,Tahoma,sans-serif;margin:0;background:#f4f6f8;color:#17202a}
+header{padding:18px 24px;background:#17202a;color:#fff}
+main{max-width:1200px;margin:auto;padding:20px}
+.grid{display:grid;grid-template-columns:320px 1fr;gap:18px}
+.panel{background:#fff;border-radius:14px;padding:16px;box-shadow:0 2px 12px #0001}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+button,input,textarea{font:inherit}
+button{border:0;border-radius:9px;padding:9px 13px;cursor:pointer;background:#e8edf2}
+button.primary{background:#1769e0;color:#fff}
+textarea{width:100%;min-height:90px;box-sizing:border-box;padding:10px;border:1px solid #ccd3da;border-radius:9px}
+canvas{max-width:100%;display:block;margin:auto;background:#eee;border-radius:10px;touch-action:none}
+#status{margin-top:10px;font-size:13px;color:#465}
+label{display:block;margin:12px 0 6px;font-weight:600}
+.muted{color:#667;font-size:13px;line-height:1.6}
+</style>
 </head>
 <body>
-<header><strong>AI Image Editor</strong> — محرر صور ذكي محلي V5</header>
+<header><strong>AI Image Editor</strong> — محرر صور ذكي محلي V6</header>
 <main>
 <div class="grid">
 <section class="panel">
 <label>الصورة</label><input id="file" type="file" accept="image/*">
 <label>طلب التعديل</label>
-<textarea id="prompt" placeholder="مثال: أضف شريكًا يجلس بجانبها بكل حب وود، مع الحفاظ على ملامحها وإضاءة الصورة."></textarea>
-<label>القناع</label>
+<textarea id="prompt" placeholder="مثال: أضف شريكًا يجلس بجانبها بكل حب وود، مع الحفاظ على ملامحها وإضاءة الصورة وتناسق المشهد."></textarea>
+<label>منطقة التعديل</label>
 <div class="row"><button id="mask">وضع القناع</button><button id="clearMask">مسح القناع</button></div>
+<p class="muted">بعد اختيار «وضع القناع»، ارسم فوق المكان الذي تريد من AI أن يضيف أو يعدّل فيه. اللون الأحمر ظاهر فقط أثناء الرسم ولا يُرسل للصورة النهائية.</p>
 <label>أوامر سريعة</label>
 <div class="row"><button data-cmd="rotate">تدوير</button><button data-cmd="flip">عكس</button><button data-cmd="bright">إضاءة +</button><button data-cmd="contrast">تباين +</button></div>
 <label>محرك AI المحلي</label>
 <div class="row"><button id="check">فحص ComfyUI</button><button id="ai" class="primary">تنفيذ التعديل بالـAI</button></div>
 <div id="status">جاهز.</div>
-<p class="muted">V5 مصمم ليعمل محليًا. لا يحتاج مفتاح API. تنفيذ التوليد يتطلب محركًا محليًا مثل ComfyUI مع Workflow متوافق.</p>
+<p class="muted">V6 يرسل الصورة والقناع والوصف إلى ComfyUI المحلي عبر API. لا يحتاج مفتاح API. على جهازك الحالي (Intel UHD + 16GB RAM) سيكون التوليد المحلي بطيئًا، لذلك سنبدأ بإعداد خفيف واختبار صغير.</p>
 </section>
 <section class="panel"><canvas id="canvas" width="900" height="600"></canvas></section>
 </div>
