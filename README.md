@@ -33,3 +33,12 @@ ComfyUI يوفر واجهة API محلية ويمكن تشغيله على Window
 الهدف هو أن يستطيع التطبيق إرسال الصورة + الطلب إلى Backend متوافق ثم عرض النتيجة، سواء كان التنفيذ محليًا أو عبر Backend اختياري أقوى.
 
 > ملاحظة السلامة: المشروع لا يهدف إلى تجاوز أنظمة أمان النماذج أو مزودي الخدمة. الهدف هو جعل تحرير الصور العادي مرنًا وسهلًا قدر الإمكان.
+
+
+## V6 status
+
+V6 now contains a real local ComfyUI API bridge for masked image editing. The browser sends the image, mask and natural-language prompt to `server.py`, which uploads them to ComfyUI, queues the workflow, waits for completion, and returns the generated image.
+
+The first target workflow is Stable Diffusion v1.5 Inpainting because the current PC has Intel UHD integrated graphics, 16 GB RAM, and only 128 MB dedicated VRAM. Large modern image-editing models are intentionally not the first target.
+
+See `docs/MODEL-STRATEGY-V6.md`.
