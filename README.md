@@ -1,22 +1,18 @@
 # AI Image Editor
 
-AI Image Editor Lite — a lightweight hybrid local web image editor.
+محرر صور ذكي محلي وخفيف يعمل من المتصفح على Windows، بواجهة عربية/إنجليزية، ويهدف إلى تنفيذ تعديلات الصور محليًا دون مفاتيح API مدفوعة.
 
-## Project goal
-Build a simple Arabic/English AI-assisted image editor that can perform local editing and connect to a local AI image engine such as ComfyUI, while keeping the architecture independent of any single API provider.
+## V5
+- محرر صور محلي.
+- أوامر نصية بالعربية/الإنجليزية.
+- دعم القناع للتعديلات الموضعية.
+- طبقة اتصال محلية مع ComfyUI.
+- فحص RAM وGPU قبل اختيار نموذج AI.
+- لا يتم تضمين ملفات النماذج الكبيرة داخل GitHub.
 
-## Target hardware
-- Lenovo ThinkCentre M70s Gen 4
-- Intel Core i5-13400
-- 16 GB DDR4 RAM
-- 512 GB SSD
+ComfyUI يوفر واجهة API محلية ويمكن تشغيله على Windows وأنواع متعددة من العتاد، لذلك سنختار Workflow ونموذجًا وفق مواصفات الجهاز الفعلية. citeturn0search0
 
-## Development roadmap
-- V1: local image editor basics
-- V2: masking and AI endpoint preparation
-- V3: Arabic AI edit commands and edit modes
-- V4: ComfyUI/local-engine integration architecture
-- V5: hardware-aware local AI workflow and real image-edit execution
+## الخطوة الحالية
+شغّل `tools/check-hardware.ps1` على جهاز Windows ثم أرسل لي الناتج. لن نثبت نموذجًا كبيرًا قبل معرفة GPU/VRAM.
 
-## Important
-The application does not bypass model/provider safety systems. It is designed to avoid unnecessary restrictions in ordinary image-editing workflows while respecting applicable safety requirements.
+> ملاحظة السلامة: المشروع لا يهدف إلى تجاوز أنظمة أمان النماذج أو مزودي الخدمة. الهدف هو جعل تحرير الصور العادي مرنًا وسهلًا قدر الإمكان.
